@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .box {
+        padding: 20px;
+        box-shadow: 0px 3px 15px gray;
+        background-color: white;
+        width: 30%;
+        top: 0%;
+        position: fixed;
+        left: 55%;
+        display: none;
+    }
+</style>
+
+<body>
+    <h1>hello admin</h1>
+
+
+    <label>product img: <input type="text" name="img" id="img"></label><br><br>
+    <label>product Name: <input type="text" name="name" id="name"></label><br><br>
+    <label>Description: <input type="text" name="desc" id="desc"></label><br><br>
+    <label>price: <input type="number" name="price" id="price"></label><br><br>
+    <label>Deals: <input type="text" name="deals" id="deals"></label><br><br>
+    <label>Discount: <input type="number" name="discount" id="discount"></label><br><br>
+    <label>available: <input type="text" id="available"></label><br><br>
+    <button onclick="addData()">Add</button><br><br>
+
+    <table border="1" cellspacing="0px" cellpadding="10">
+        <thead>
+            <tr>
+                <th>product img</th>
+                <th>products name</th>
+                <th>Description</th>
+                <th>price</th>
+                <th>Deals</th>
+                <th>Discount</th>
+                <th>available</th>
+                <th>delet</th>
+                <th>view</th>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table><br><br>
+
+    <div class="box" id="mybox">
+        <button onclick="closedata()" id="close">close</button>
+        <br>
+        <label>product image<input type="text" name="image" id="imagee"></label><br><br>
+        <label>product Name<input type="text" name="name" id="namee"></label> <br><br>
+        <label>desc<input type="text" name="desc" id="descc"></label> <br><br>
+        <label>price<input type="number" name="price" id="pricee"><br><br></label>
+        <label>deals<input type="text" name="deals" id="deal"></label> <br><br>
+        <label>discount<input type="number" name="discount" id="discunt"><br><br></label>
+        <label>avilable<input type="text" name="available" id="avail"><br><br></label>
+        <input type="hidden" id="index">
+        <button onclick="save()">Save Changes</button>
+    </div>
+
+
+    <script>
+        let product = JSON.parse(localStorage.getItem("product")) || [];
+        console.log(product);
+        let tbody = document.getElementById("tbody");
+
+        let addData = () => {
+            let img = document.getElementById("img").value;
+            let name = document.getElementById("name").value;
+            let desc = document.getElementById("desc").value;
+            let price = document.getElementById("price").value;
+            let deals = document.getElementById("deals").value;
+            let discount = document.getElementById("discount").value;
+            let available = document.getElementById("available").value;
+
+            let Data = {
+                img,
+                name,
+                desc,
+                price,
+                deals,
+                discount,
+                available,
+            };
+            product.push(Data);
+            localStorage.setItem("product", JSON.stringify(product));
+            location.reload();
+
+        }
+
+        let loadData = () => {
+            product.map((val, ind) => {
+                let tr = document.createElement("tr");
+                tr.innerHTML = `
+                <td>${val.img}</td>
+                <td>${val.name}</td>
+                <td>${val.desc}</td>
+                <td>${val.price}</td>
+                <td>${val.deals}</td>
+                <td>${val.discount}</td>
+                <td>${val.available}</td>
+                <td><button onclick="delet(${ind})">delet</button></td>
+                <td><button onclick="view(${ind})">view</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        };
+        loadData();
+
+
+        let delet = (ind) => {
+            let result = product[ind]
+            let newproducts = product.filter((val) => val.name !== result.name)
+            console.log(newproducts);
+            localStorage.setItem("product", JSON.stringify(newproducts));
+            location.reload();
+        }
+
+
+        let view = (ind) => {
+            let box = document.getElementById("mybox")
+            box.style.display = "block";
+
+            let result = product[ind]
+            document.getElementById("imagee").value = result.img;
+            document.getElementById("namee").value = result.name;
+            document.getElementById("descc").value = result.desc;
+            document.getElementById("pricee").value = result.price;
+            document.getElementById("deal").value = result.deals;
+            document.getElementById("discunt").value = result.discount;
+            document.getElementById("avail").value = result.available;
+            document.getElementById("index").value = ind;
+
+        }
+
+        // function updateData() {
+        //     let index = document.getElementById("index").value;
+        //     let img = document.getElementById("viewimg").value;
+        //     let name = document.getElementById("viewname").value;
+        //     let desc = document.getElementById("viewdesc").value;
+        //     let price = document.getElementById("viewprice").value;
+        //     let deals = document.getElementById("viewdeals").value;
+        //     let discount = document.getElementById("viewdiscount").value;
+        //     let available = document.getElementById("viewavailable").value;
+
+        //     let data = {
+        //         img,
+        //         name,
+        //         desc,
+        //         price,
+        //         deals,
+        //         discount,
+        //         available,
+        //     };
+        //     console.log(data);
+
+        //     product.splice(index, 1, data);
+        //     localStorage.setItem("product", JSON.stringify(product));
+        //     location.reload();
+        // };
+
+        let save = () => {
+            let index = document.getElementById("index").value;
+
+            // let img = document.getElementById("imgee").value;
+            // let name = document.getElementById("namee").value;
+            // let desc = document.getElementById("descc").value;
+            // let price = document.getElementById("pricee").value;
+            // let deals = document.getElementById("deal").value;
+            // let discount = document.getElementById("discunt").value;
+            // let available = document.getElementById("avail").value;
+
+            let Data = {
+
+                img: document.getElementById("imagee").value,
+                name: document.getElementById("namee").value,
+                desc: document.getElementById("descc").value,
+                price: document.getElementById("pricee").value,
+                deals: document.getElementById("deal").value,
+                discount: document.getElementById("discunt").value,
+                available: document.getElementById("avail").value,
+            };
+
+            console.log(Data);
+
+            product.splice(index, 1, Data)
+            localStorage.setItem("product", JSON.stringify(Data))
+            location.reload();
+            // console.log(product);
+            // Data.splice(index, 1, Data)
+        };
+
+
+        let closedata = () => {
+            let box = document.getElementById("mybox")
+            box.style.display = "none"
+        };
+
+
+
+    </script>
+
+</body>
+
+</html>

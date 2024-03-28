@@ -1,0 +1,127 @@
+@media (max-width:1400px) {
+    header .searchbar input {
+        width: 450px;
+    }
+}
+
+@media (max-width:1320px) {
+    header .searchbar input {
+        width: 350px;
+    }
+}
+
+@media (max-width:1200px) {
+    header .searchbar input {
+        width: 210px;
+    }
+    .navbar-expand-lg {
+        padding: 10px 10px 10px 15px;
+    }
+    .banner .swiper-button-prev:after,
+    .banner .swiper-button-next:after {
+        margin-bottom: 120px;
+    }
+    .banner .banner-data {  
+        margin-top: -180px;
+        padding: 0 5px;
+    }
+    .brand {  
+        padding: 0px 5px 0px;
+    }
+   
+
+}
+
+@media (max-width:1120px) {
+    header .searchbar input {
+        width: 130px;
+    }
+
+    .banner .home-img img {
+        height: auto;
+    }
+}
+
+@media (max-width:992px) {
+    .banner .swiper-button-prev:after,
+    .banner .swiper-button-next:after {
+        margin-bottom: 100px;
+    }
+    .banner .banner-data {
+        margin-top: -130px;
+    }
+    .swiper-button-prev:after {
+        margin-right: 20px;
+        padding: 20px 20px 20px 10px;
+    }
+    .swiper-button-next:after {
+        padding: 20px 15px 20px 15px;
+        margin-left: 20px;
+    
+    }
+}
+
+@media (max-width:768px) {
+    .banner .swiper-button-prev:after,
+    .banner .swiper-button-next:after {
+        margin-bottom: 80px;
+    }
+    .banner .banner-data {
+        margin-top: -80px;
+    
+    }
+}
+@media (max-width:576px) {
+    .card {
+        /* aspect-ratio: 5/6; */
+        margin-bottom: 20px;
+    }
+
+    .banner .swiper-slide img {
+        height: 300px;
+        object-fit: cover;
+
+    }
+   
+    .swiper-button-prev:after,
+    .swiper-button-next:after {
+        font-size: 15px;
+    }
+
+    .banner .swiper-button-prev:after,
+    .banner .swiper-button-next:after {
+        margin-bottom: 50px;
+    }
+
+    .banner .banner-data {
+        position: relative;
+        margin-top: -50px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+    .banner .home-img p{
+        font-size: 10px;
+    }
+    .deals *{
+        margin: 0 auto;
+    }
+    .history *{
+        margin: 0 auto;
+    }
+    .categ .nav-bar{
+        padding: 0px;
+    }
+    .categ .nav-img{
+        justify-content: start;
+        padding: 0px;
+    }
+    .result .result-data p{
+        font-size: 12px;
+       
+    }
+    .bags .bag-img  img *{
+        margin: 0 auto;
+    }
+}
