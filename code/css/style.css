@@ -442,7 +442,7 @@ header .tolly:hover {
 /* ========================shopping================= */
 .shopping {
    padding: 20px 20px 0px;
-   background-color: var(--bg-color);
+   background-color: #E3E6E6;
 }
 
 .shopping .pro-img {
@@ -651,6 +651,21 @@ header .tolly:hover {
    font-size: 17px;
    margin-left: 30px;
    cursor: pointer;
+}
+
+.kurta.swiper-button-prev:after,
+.kurta.swiper-button-next:after{
+    font-size: 20px;
+    border: 1px solid var(--fot-text);
+    background-color: var(--white);
+    padding: 10px 10px;
+    visibility: visible;
+}
+.kurta.swiper-button-prev:after {
+    margin-right: 0px;
+}
+.kurta.swiper-button-next:after {
+    margin-left: 0px;
 }
 
 .kurta .price {
@@ -1052,9 +1067,9 @@ span {
    font-size: 14px;
 }
 
-.bags card {
-   width: 241px;
-   height: 610px;
+.bags .card {
+   /* width: 241px;
+   height: 610px; */
    border: 1px solid rgb(245, 245, 245);
    padding: 0 10px;
    position: relative;
@@ -1062,10 +1077,12 @@ span {
 }
 
 .bags .bag-img img {
-   aspect-ratio: 3 / 4;
+   /* aspect-ratio: 3 / 4; */
    object-fit: contain;
    margin-top: 25px;
 }
+
+
 
 .bags .best button {
    font-size: 12px;
