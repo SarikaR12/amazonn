@@ -199,7 +199,7 @@
     <section class="products">
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-lg-2 col-4">
                     <div class="filter">
                         <div class="filter-head d-flex justify-content-between align-self-center mb-2">
                             <p class="mb-0">Selected filters (1)</p>
@@ -398,7 +398,6 @@
                                 <li>50% Off or more</li>
                                 <li>60% Off or more</li>
                                 <li>70% Off or more</li>
-
                             </ul>
                         </div>
                     </div>
@@ -413,7 +412,6 @@
                                 limited</label>
                             <label class="d-block"> <input type="checkbox">&nbsp; GlobalBees Personal Care</label>
                             <label class="d-block"> <input type="checkbox">&nbsp; GlobalBees Lifestyle</label>
-
                         </div>
                     </div>
                     <div class="dash branch">
@@ -610,8 +608,8 @@
             products.map((val, ind) => {
                 let card = document.createElement("card")
                 card.innerHTML = `
-                <div class="bag-img">
-                                    <img src="${val.img}" alt="bag image" />
+                <div class="bag-img d-flex justify-content-center">
+                                    <img src="${val.img}" alt="bag image" height="250px" width="200px" />
                                 </div>
                                 <div class="bag-card">
                                     <div class="card-data text-center">
@@ -628,7 +626,7 @@
                                         </div>
                                         <span>1K+ bought in past month</span>
                                         <div class="prime d-flex flex-wrap justify-content-center align-self-end">
-                                            <h4 class="mb-0">₹ ${val.prise} </h4>
+                                            <h4 class="mb-0">₹ ${val.price} </h4>
                                             <p class="mb-0 align-self-end">M.R.P: <span>₹${val.deals}</span></p>
                                             <span class="align-self-center mt-2 ms-2">(${val.discount}% off)</span>
                                         </div>
@@ -636,8 +634,7 @@
                                         <p class="mb-0">FREE Delivery by Amazon</p>
                                     </div>
                                 </div>
-                                <button onclick="addcart(${ind})" class="bg-danger border-0 rounded-2 py-1 text-white">Add To
-                                    Cart</button>
+                                <button onclick="addcart(${ind})" class="bg-danger border-0 rounded-2 py-1 text-white mb-3">Add To Cart</button>
                                     `
                 bag.appendChild(card)
             })
