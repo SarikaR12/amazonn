@@ -193,6 +193,7 @@
     <div class="date">
         <div class="date-data d-flex justify-content-between">
             <p class="mb-0">1-48 of over 30,000 results</p>
+            <!-- <button>Sort by:&nbsp;&nbsp; Bestselling <i class="fa-solid fa-angle-down"></i></button> -->
         </div>
     </div>
 
@@ -240,46 +241,7 @@
                                 <li>Waist Packs</li>
                             </ul>
                         </div>
-                    </div>
-                    <div class="dash">
-                        <div class="dash-data mb-3">
-                            <p class="mb-1">Customer Review (review-rating)</p>
-                            <span><i class="fa-solid fa-angle-left"></i> Clear</span>
-                            <div class="filter-btn">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <span>& up</span>
-                            </div>
-                            <div class="filter-btn">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <span class="fw-bold">& up</span>
-                            </div>
-                            <div class="filter-btn">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <span>& up</span>
-                            </div>
-
-                            <div class="filter-btn">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <span>& up</span>
-                            </div>
-                        </div>
-                    </div>
+                    </div> 
                     <div class="dash branch">
                         <div class="dash-data mb-3">
                             <p class="mb-1">Brand</p>
@@ -598,6 +560,27 @@
         </div>
     </section>
 
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 0,
+            loop: false,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            scrollbar: {
+                el: ".swiper-scrollbar",
+            },
+        });
+    </script>
+
     <script>
 
         let products = JSON.parse(localStorage.getItem("product"))
@@ -627,7 +610,7 @@
                                         <span>1K+ bought in past month</span>
                                         <div class="prime d-flex flex-wrap justify-content-center align-self-end">
                                             <h4 class="mb-0">₹ ${val.price} </h4>
-                                            <p class="mb-0 align-self-end">M.R.P: <span>₹${val.deals}</span></p>
+                                            <p class="mb-0 align-self-end"><span>₹${val.deals}</span></p>
                                             <span class="align-self-center mt-2 ms-2">(${val.discount}% off)</span>
                                         </div>
                                         <img src="images/prime-img.png" alt="prime image" />
@@ -642,11 +625,12 @@
         loaddata()
 
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
         let addcart = (ind) => {
             let product = products[ind]
             cart.push(product)
             localStorage.setItem("cart", JSON.stringify(cart))
-            location.reload()
+            location.reload();
         }
         let count = (document.getElementById("count").innerHTML = cart.length)
 
