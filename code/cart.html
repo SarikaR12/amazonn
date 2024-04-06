@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/all.min.css" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/fonts.css">
-    <link rel="stylesheet" href="css/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
-</head>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="css/all.min.css" />
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/fonts.css">
+        <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/responsive.css" />
+    </head>
 
 
 
 <body>
-
-
     <header>
         <div class="head-info d-flex justify-content-between ">
             <div class="logo-img d-flex">
@@ -146,9 +145,9 @@
                 <p class="mb-0 align-self-end ms-1">cart</p>
                 <label class="position-absolute" id="count">0</label>
             </a>
-
         </div>
     </header>
+
     <div class="header-bottom">
         <div class="head-detalis">
             <span><i class="fa-solid fa-bars me-1"></i></span>
@@ -156,6 +155,7 @@
             <a href="All-products.html" class="ms-2">products</a>
         </div>
     </div>
+
 
     <section class="products">
         <div class="container">
@@ -172,6 +172,52 @@
             </div>
         </div>
     </section>
+
+    <div class="bag-cart">
+        <div class="row">
+            <div class="col-md-1 col-0"></div>
+            <div class="col-md-10 col-12">
+                <div class="bags">
+                    <div id="bag" class="bag-info d-flex justify-content-between flex-wrap position-relative"></div>
+                </div>
+            </div>
+            <div class="col-md-1 col-0"></div>
+
+        </div>
+    </div>
+
+    <!-- <div class="bag-table">
+        <table border="1" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>image</th>
+                    <th>item</th>
+                    <th>price</th>
+                    <th>quantity</th>
+                    <th>SubToale</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+    </div>
+    <table border="1" class="total-table">
+        <thead id="thead">
+        </thead>
+    </table>
+    <table border="1" class="total-table">
+        <thead id="thead">
+        </thead>
+    </table> -->
+
+
+
+    <!-- <div id="total"></div> -->
+
+
 
     <style>
         #count {
@@ -191,12 +237,13 @@
 
         let cart = JSON.parse(localStorage.getItem("cart"))
         console.log(cart);
+
         let loaddata = () => {
             let bag = document.getElementById("bag")
             cart.map((val, ind) => {
                 let card = document.createElement("card")
                 card.innerHTML = `<div class="bag-img">
-                                    <img src="${val.img}" alt="bag image" />
+                                    <img src="${val.img}" alt="bag image" height="250px" width="200px" />
                                 </div>
                                 <div class="bag-card">
                                     <div class="card-data text-center">
@@ -213,26 +260,25 @@
                                         </div>
                                         <span>1K+ bought in past month</span>
                                         <div class="prime d-flex flex-wrap justify-content-center align-self-end">
-                                            <h4 class="mb-0">₹ ${val.prise} </h4>
-                                            <p class="mb-0 align-self-end">M.R.P: <span>₹${val.deals}</span></p>
+                                            <h4 class="mb-0">₹ ${val.price} </h4>
+                                            <p class="mb-0 align-self-end"><span>₹${val.deals}</span></p>
                                             <span class="align-self-center mt-2 ms-2">(${val.discount}% off)</span>
                                         </div>
                                         <img src="images/prime-img.png" alt="prime image" />
                                         <p class="mb-0">FREE Delivery by Amazon</p>
                                     </div>
                                 </div>
-                                <button onclick="addcart(${ind})" class="bg-danger border-0 rounded-2 py-1 text-white">Add To
-                                Cart</button>`
+                                <button onclick="removecart(${ind})" class="bg-danger border-0 rounded-2 py-1 text-white mb-3">Remove To Cart</button>`
                 bag.appendChild(card)
             })
         }
         loaddata();
 
-        let addcart = (ind) => {
-            let car = cart[ind]
-            console.log(car);
+        letcart = (ind) => {
+            let remove = cart[ind]
+            console.log(remove);
 
-            let result = cart.filter((val) => val.name != car.name)
+            let result = cart.filter((val) => val.name != remove.name)
             console.log(result);
 
             localStorage.setItem("cart", JSON.stringify(result))
@@ -243,4 +289,5 @@
     </script>
 
 </body>
+
 </html>
